@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="新增员工代码开发">
+    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="员工分页查询代码开发">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-pojo/src/main/java/com/icee/entity/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-pojo/src/main/java/com/icee/entity/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/config/WebMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/config/WebMvcConfiguration.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/EmployeeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/EmployeeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/EmployeeMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/EmployeeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/EmployeeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/EmployeeMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +111,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1762219484199</updated>
-      <workItem from="1762219489233" duration="34542000" />
+      <workItem from="1762219489233" duration="39203000" />
     </task>
     <task id="LOCAL-00001" summary="苍穹外卖项目初始代码">
       <option name="closed" value="true" />
@@ -133,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762329100597</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="员工分页查询代码开发">
+      <option name="closed" value="true" />
+      <created>1762333869384</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762333869384</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -170,7 +174,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -185,6 +189,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="苍穹外卖项目初始代码" />
     <MESSAGE value="新增员工代码开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="新增员工代码开发" />
+    <MESSAGE value="员工分页查询代码开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="员工分页查询代码开发" />
   </component>
 </project>

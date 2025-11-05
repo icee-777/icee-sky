@@ -94,11 +94,26 @@ public class EmployeeController {
      * @return
      */
     @GetMapping("/page")
+    @Operation(summary = "分页查询")
     public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
         //get~URL参数~@RequestParam     post/put~json~@RequestBody
         //Spring MVC 支持将 URL 参数自动绑定到对象属性
         PageResult pageResult =employeeService.page(employeePageQueryDTO);
         return Result.success(pageResult);
+    }
+
+    /**
+     * 启用禁用员工账号
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    @Operation(summary = "启用禁用员工账号")
+    public Result<String> changeStatus(@PathVariable Integer status,
+                                       @RequestParam Long id){
+        employeeService.status(status,id);
+        return Result.success();
     }
 
 }

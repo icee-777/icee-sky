@@ -6,6 +6,7 @@ import com.icee.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -34,4 +35,12 @@ public interface EmployeeMapper {
      * @return
      */
     Page<Employee> page(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     * 修改员工状态
+     * @param status
+     * @param id
+     */
+    @Update("update employee set status = #{status} where id=#{id}")
+    void status(Integer status, Long id);
 }
