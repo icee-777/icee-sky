@@ -1,6 +1,7 @@
-package com.icee.admin;
+package com.icee.controller.admin;
 
 import com.icee.constant.JwtClaimsConstant;
+import com.icee.dto.EmployeeDTO;
 import com.icee.dto.EmployeeLoginDTO;
 import com.icee.entity.Employee;
 import com.icee.properties.JwtProperties;
@@ -8,6 +9,8 @@ import com.icee.result.Result;
 import com.icee.service.EmployeeService;
 import com.icee.utils.JwtUtil;
 import com.icee.vo.EmployeeLoginVO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +27,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/admin/employee")
 @Slf4j
+@Tag(name = "员工管理")
 public class EmployeeController {
 
     @Autowired
@@ -38,10 +42,12 @@ public class EmployeeController {
      * @return
      */
     @PostMapping("/login")
+    @Operation(summary = "员工登录")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("员工登录：{}", employeeLoginDTO);
 
         Employee employee = employeeService.login(employeeLoginDTO);
+
 
         //登录成功后，生成jwt令牌
         Map<String, Object> claims = new HashMap<>();
@@ -67,7 +73,20 @@ public class EmployeeController {
      * @return
      */
     @PostMapping("/logout")
+    @Operation(summary = "员工退出")
     public Result<String> logout() {
+        return Result.success();
+    }
+
+    /**
+     * 新增员工
+     * @param employeeDTO
+     * @return
+     */
+    @PostMapping
+    @Operation(summary = "新增员工")
+    public Result save(@RequestBody EmployeeDTO employeeDTO){
+        employeeService.save(employeeDTO);
         return Result.success();
     }
 

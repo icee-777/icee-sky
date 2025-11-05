@@ -1,5 +1,6 @@
 package com.icee.service;
 
+import com.icee.dto.EmployeeDTO;
 import com.icee.dto.EmployeeLoginDTO;
 import com.icee.entity.Employee;
 
@@ -12,4 +13,9 @@ public interface EmployeeService {
      */
     Employee login(EmployeeLoginDTO employeeLoginDTO);
 
+    /**
+     * 新增员工
+     * @param employeeDTO
+     */
+    void save(EmployeeDTO employeeDTO);
 }
