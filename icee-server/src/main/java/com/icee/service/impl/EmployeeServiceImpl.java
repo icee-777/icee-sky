@@ -1,16 +1,20 @@
 package com.icee.service.impl;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.icee.constant.MessageConstant;
 import com.icee.constant.PasswordConstant;
 import com.icee.constant.StatusConstant;
 import com.icee.context.BaseContext;
 import com.icee.dto.EmployeeDTO;
 import com.icee.dto.EmployeeLoginDTO;
+import com.icee.dto.EmployeePageQueryDTO;
 import com.icee.entity.Employee;
 import com.icee.exception.AccountLockedException;
 import com.icee.exception.AccountNotFoundException;
 import com.icee.exception.PasswordErrorException;
 import com.icee.mapper.EmployeeMapper;
+import com.icee.result.PageResult;
 import com.icee.service.EmployeeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -80,6 +85,22 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setUpdateUser(BaseContext.getCurrentId());
 
         employeeMapper.insert(employee);
+    }
+
+
+    /**
+     * 分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
+    @Override
+    public PageResult page(EmployeePageQueryDTO employeePageQueryDTO) {
+        String name=employeePageQueryDTO.getName();
+
+        //开始分页查询
+        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
+        Page<Employee> page=employeeMapper.page(employeePageQueryDTO);
+        return new PageResult(page.getTotal(),page);
     }
 
 }

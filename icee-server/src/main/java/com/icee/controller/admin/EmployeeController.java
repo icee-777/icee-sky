@@ -3,8 +3,10 @@ package com.icee.controller.admin;
 import com.icee.constant.JwtClaimsConstant;
 import com.icee.dto.EmployeeDTO;
 import com.icee.dto.EmployeeLoginDTO;
+import com.icee.dto.EmployeePageQueryDTO;
 import com.icee.entity.Employee;
 import com.icee.properties.JwtProperties;
+import com.icee.result.PageResult;
 import com.icee.result.Result;
 import com.icee.service.EmployeeService;
 import com.icee.utils.JwtUtil;
@@ -13,10 +15,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -69,7 +68,6 @@ public class EmployeeController {
 
     /**
      * 退出
-     *
      * @return
      */
     @PostMapping("/logout")
@@ -85,9 +83,22 @@ public class EmployeeController {
      */
     @PostMapping
     @Operation(summary = "新增员工")
-    public Result save(@RequestBody EmployeeDTO employeeDTO){
+    public Result<String> save(@RequestBody EmployeeDTO employeeDTO){
         employeeService.save(employeeDTO);
         return Result.success();
+    }
+
+    /**
+     * 分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
+    @GetMapping("/page")
+    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
+        //get~URL参数~@RequestParam     post/put~json~@RequestBody
+        //Spring MVC 支持将 URL 参数自动绑定到对象属性
+        PageResult pageResult =employeeService.page(employeePageQueryDTO);
+        return Result.success(pageResult);
     }
 
 }
