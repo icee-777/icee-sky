@@ -49,3 +49,8 @@ logging:
         service: info
         controller: info
 
+# application.yml 配置示例
+pagehelper:
+  helper-dialect: mysql  # 这是关键配置！根据你的数据库调整
+  reasonable: true       # 分页合理化，可选
+  support-methods-arguments: true # 支持接口参数，可选

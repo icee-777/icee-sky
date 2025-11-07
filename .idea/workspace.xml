@@ -4,18 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="员工启用禁用代码开发">
+    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="编辑员工代码开发">
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/CategoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetmealMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/CategoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/DishMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/SetmealMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/EmployeeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/interceptor/JwtTokenAdminInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/interceptor/JwtTokenAdminInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/EmployeeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/EmployeeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/EmployeeService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -36,6 +51,9 @@
   &quot;associatedIndex&quot;: 5
 }</component>
   <component name="ProjectId" id="34zbjLpkhUZzKjwyndyNwoe1mU2" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -57,7 +75,7 @@
     "Spring Boot.SkyApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/icee/IdeaProjects/icee-out/icee-server/src/main/resources",
+    "last_opened_file_path": "/Users/icee/IdeaProjects/icee-out/icee-server/src/main/resources/com/icee/mapper",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -78,7 +96,11 @@
     <option name="notificationShown" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.icee.service.impl" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper" />
       <recent name="$PROJECT_DIR$/icee-server/src/main/resources" />
       <recent name="$PROJECT_DIR$/icee-server/src/main/java/com/icee" />
       <recent name="$PROJECT_DIR$/icee-pojo/src/main/java/com/icee" />
@@ -112,7 +134,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1762219484199</updated>
-      <workItem from="1762219489233" duration="44360000" />
+      <workItem from="1762219489233" duration="54104000" />
     </task>
     <task id="LOCAL-00001" summary="苍穹外卖项目初始代码">
       <option name="closed" value="true" />
@@ -146,7 +168,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762349466667</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="编辑员工代码开发">
+      <option name="closed" value="true" />
+      <created>1762483808269</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762483808269</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -183,7 +213,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -200,17 +230,7 @@
     <MESSAGE value="新增员工代码开发" />
     <MESSAGE value="员工分页查询代码开发" />
     <MESSAGE value="员工启用禁用代码开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="员工启用禁用代码开发" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/EmployeeController.java</url>
-          <line>138</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="编辑员工代码开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="编辑员工代码开发" />
   </component>
 </project>

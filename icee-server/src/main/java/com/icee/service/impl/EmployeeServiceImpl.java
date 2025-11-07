@@ -2,6 +2,7 @@ package com.icee.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.icee.constant.MessageConstant;
 import com.icee.constant.PasswordConstant;
 import com.icee.constant.StatusConstant;
@@ -68,6 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 新增员工
+     *
      * @param employeeDTO
      */
     @Override
@@ -75,7 +77,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         //DTO方便前端传输数据,当传入持久层时,先转换为实体对象
         Employee employee = new Employee();
         //属性拷贝
-        BeanUtils.copyProperties(employeeDTO,employee);
+        BeanUtils.copyProperties(employeeDTO, employee);
 
         employee.setStatus(StatusConstant.ENABLE);
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
@@ -90,32 +92,37 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 分页查询
+     *
      * @param employeePageQueryDTO
      * @return
      */
     @Override
     public PageResult page(EmployeePageQueryDTO employeePageQueryDTO) {
-        String name=employeePageQueryDTO.getName();
-
-        //开始分页查询
-        PageHelper.startPage(employeePageQueryDTO.getPage(),employeePageQueryDTO.getPageSize());
-        Page<Employee> page=employeeMapper.page(employeePageQueryDTO);
-        return new PageResult(page.getTotal(),page);
+        // 开始分页查询
+        PageHelper.startPage(employeePageQueryDTO.getPage(), employeePageQueryDTO.getPageSize());
+        // 执行查询，并将返回的List强转为Page类型
+        Page<Employee> page = (Page<Employee>) employeeMapper.page(employeePageQueryDTO);
+        // 获取分页信息
+        long total = page.getTotal(); // 总记录数
+        List<Employee> result = page.getResult(); // 当前页数据列表
+        return new PageResult(total, result);
     }
 
     /**
      * 启用禁用员工账号
+     *
      * @param status
      * @param id
      */
     @Override
     public void status(Integer status, Long id) {
 //        Long updateUser = BaseContext.getCurrentId();      启用禁用不用更新修改员工
-        employeeMapper.status(status,id);
+        employeeMapper.status(status, id);
     }
 
     /**
      * 根据id查询员工信息
+     *
      * @param id
      * @return
      */
@@ -128,19 +135,20 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     /**
      * 编辑员工信息
+     *
      * @param employeeDTO
      */
     @Override
     public void update(EmployeeDTO employeeDTO) {
-        Employee employee=Employee.builder()
-                        .id(employeeDTO.getId())
-                        .name(employeeDTO.getName())
-                        .phone(employeeDTO.getPhone())
-                        .sex(employeeDTO.getSex())
-                        .idNumber(employeeDTO.getIdNumber())
-                        .updateTime(LocalDateTime.now())
-                        .updateUser(BaseContext.getCurrentId())
-                        .build();
+        Employee employee = Employee.builder()
+                .id(employeeDTO.getId())
+                .name(employeeDTO.getName())
+                .phone(employeeDTO.getPhone())
+                .sex(employeeDTO.getSex())
+                .idNumber(employeeDTO.getIdNumber())
+                .updateTime(LocalDateTime.now())
+                .updateUser(BaseContext.getCurrentId())
+                .build();
         employeeMapper.update(employee);
     }
 
