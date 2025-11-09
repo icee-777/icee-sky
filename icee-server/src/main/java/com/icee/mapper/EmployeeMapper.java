@@ -1,8 +1,10 @@
 package com.icee.mapper;
 
 import com.github.pagehelper.Page;
+import com.icee.annotation.AutoFill;
 import com.icee.dto.EmployeePageQueryDTO;
 import com.icee.entity.Employee;
+import com.icee.enumeration.OperationType;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -27,6 +29,7 @@ public interface EmployeeMapper {
      */
     @Insert("insert into employee (name, username, password, phone, sex, id_number, status, create_time, update_time, create_user, update_user) " +
             "values (#{name}, #{username}, #{password}, #{phone}, #{sex}, #{idNumber}, #{status}, #{createTime}, #{updateTime}, #{createUser}, #{updateUser})")
+    @AutoFill(value = OperationType.INSERT)
     void insert(Employee employee);
 
     /**
@@ -36,13 +39,6 @@ public interface EmployeeMapper {
      */
     Page<Employee> page(EmployeePageQueryDTO employeePageQueryDTO);
 
-    /**
-     * 修改员工状态
-     * @param status
-     * @param id
-     */
-    @Update("update employee set status = #{status} where id=#{id}")
-    void status(Integer status, Long id);
 
     /**
      * 根据id查询员工
@@ -56,6 +52,7 @@ public interface EmployeeMapper {
      * 更新员工信息
      * @param employee
      */
-    @Update("update employee set name = #{name}, phone = #{phone}, sex = #{sex}, id_number = #{idNumber}, update_time = #{updateTime}, update_user = #{updateUser} where id = #{id}")
+//    @Update("update employee set name = #{name}, phone = #{phone}, sex = #{sex}, id_number = #{idNumber}, update_time = #{updateTime}, update_user = #{updateUser} where id = #{id}")
+    @AutoFill(value = OperationType.UPDATE)
     void update(Employee employee);
 }

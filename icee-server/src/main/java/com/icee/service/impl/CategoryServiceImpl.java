@@ -49,7 +49,11 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public void status(Integer status, Long id) {
-        categoryMapper.status(status,id);
+        Category category=Category.builder()
+                .id(id)
+                .status(status)
+                .build();
+        categoryMapper.update( category);
     }
 
     /**
@@ -63,10 +67,6 @@ public class CategoryServiceImpl implements CategoryService {
                 .name(categoryDTO.getName())
                 .sort(categoryDTO.getSort())
                 .status(StatusConstant.DISABLE)
-                .createTime(LocalDateTime.now())
-                .updateTime(LocalDateTime.now())
-                .createUser(BaseContext.getCurrentId())
-                .updateUser(BaseContext.getCurrentId())
                 .build();
         categoryMapper.insert(category);
     }
@@ -102,8 +102,8 @@ public class CategoryServiceImpl implements CategoryService {
 //                .type(categoryDTO.getType())
                 .name(categoryDTO.getName())
                 .sort(categoryDTO.getSort())
-                .updateTime(LocalDateTime.now())
-                .updateUser(BaseContext.getCurrentId())
+//                .updateTime(LocalDateTime.now())
+//                .updateUser(BaseContext.getCurrentId())
                 .build();
         categoryMapper.update(category);
     }
