@@ -1,15 +1,15 @@
 package com.icee.controller.admin;
 
 import com.icee.dto.DishDTO;
+import com.icee.dto.DishPageQueryDTO;
+import com.icee.result.PageResult;
 import com.icee.result.Result;
 import com.icee.service.DishService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/dish")
@@ -26,8 +26,21 @@ public class DishController {
      * @return
      */
     @PostMapping
+    @Operation(summary = "新增菜品")
     public Result<String> save(@RequestBody DishDTO dishDTO){
         dishService.save(dishDTO);
         return Result.success();
+    }
+
+    /**
+     * 菜品查询
+     * @param dishPageQueryDTO
+     * @return
+     */
+    @GetMapping("/page")
+    @Operation(summary = "菜品查询")
+    public Result<PageResult> page(DishPageQueryDTO dishPageQueryDTO){
+        PageResult pageResult=dishService.page(dishPageQueryDTO);
+        return Result.success(pageResult);
     }
 }

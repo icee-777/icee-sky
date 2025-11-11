@@ -1,8 +1,11 @@
 package com.icee.mapper;
 
+import com.github.pagehelper.Page;
 import com.icee.annotation.AutoFill;
+import com.icee.dto.DishPageQueryDTO;
 import com.icee.entity.Dish;
 import com.icee.enumeration.OperationType;
+import com.icee.vo.DishVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -29,4 +32,10 @@ public interface DishMapper {
     void insert(Dish dish);
 
 
+    /**
+     * 菜品分页查询
+     * @param dishPageQueryDTO
+     * @return
+     */
+    Page<DishVO> page(DishPageQueryDTO dishPageQueryDTO);
 }

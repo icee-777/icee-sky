@@ -4,25 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="公共字段自动填充(AOP切面以及反射)代码开发">
-      <change afterPath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/utils/AliyunOSSOperator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/CommonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/DishController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishFlavorMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/DishService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/DishServiceImpl.java" afterDir="false" />
+    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="新增菜品(主键回显)代码开发">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/CategoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/CategoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/DishController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/EmployeeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/EmployeeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/application-dev.ymll" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/DishService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/DishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/DishServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/DishMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/DishMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,7 +135,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1762219484199</updated>
-      <workItem from="1762219489233" duration="80181000" />
+      <workItem from="1762219489233" duration="82397000" />
     </task>
     <task id="LOCAL-00001" summary="苍穹外卖项目初始代码">
       <option name="closed" value="true" />
@@ -205,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762673073587</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="新增菜品(主键回显)代码开发">
+      <option name="closed" value="true" />
+      <created>1762825007957</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762825007957</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -262,7 +258,8 @@
     <MESSAGE value="编辑员工代码开发" />
     <MESSAGE value="分类管理代码开发" />
     <MESSAGE value="公共字段自动填充(AOP切面以及反射)代码开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="公共字段自动填充(AOP切面以及反射)代码开发" />
+    <MESSAGE value="新增菜品(主键回显)代码开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="新增菜品(主键回显)代码开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -274,7 +271,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/DishServiceImpl.java</url>
-          <line>37</line>
+          <line>44</line>
           <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
