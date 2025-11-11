@@ -6,10 +6,9 @@ import com.icee.dto.DishPageQueryDTO;
 import com.icee.entity.Dish;
 import com.icee.enumeration.OperationType;
 import com.icee.vo.DishVO;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface DishMapper {
@@ -38,4 +37,43 @@ public interface DishMapper {
      * @return
      */
     Page<DishVO> page(DishPageQueryDTO dishPageQueryDTO);
+
+    /**
+     * 更新菜品
+     * @param dish
+     */
+    @AutoFill(value = OperationType.UPDATE)
+    void update(Dish dish);
+
+    /**
+     * 根据分类id查询菜品
+     * @param categoryId
+     * @return
+     */
+    @Select("select * from dish where category_id=#{categoryId}")
+    List<Dish> list(Integer categoryId);
+
+    /**
+     * 根据id查询菜品
+     * @param id
+     * @return
+     */
+//    @Select("select d.* , c.name as categoryName from dish d left join category c on d.category_id=c.id where d.id=#{id}")
+    @Select("select * from dish where id= #{id}")   //TODO mapper返回的应是实体对象Dish,而不是DishVO
+    Dish getById(Long id);
+
+    /**
+     * 删除菜品
+     * @param ids
+     */
+//    @Delete("delete from dish where id in #{ids}")
+    void delete(List<Long> ids);   //TODO 遍历数组元素应在xml文件中使用<foreach>标签
+
+    /**
+     * 根据id查询菜品分类名称
+     * @param id
+     * @return
+     */
+    @Select("select name as categoryName from category where id= #{id}")
+    String getCategoryNameById(Long id);
 }
