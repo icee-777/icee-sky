@@ -52,7 +52,6 @@ public interface EmployeeMapper {
      * 更新员工信息
      * @param employee
      */
-//    @Update("update employee set name = #{name}, phone = #{phone}, sex = #{sex}, id_number = #{idNumber}, update_time = #{updateTime}, update_user = #{updateUser} where id = #{id}")
     @AutoFill(value = OperationType.UPDATE)
     void update(Employee employee);
 }

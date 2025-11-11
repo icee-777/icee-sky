@@ -30,6 +30,12 @@ spring:
       password: ${icee.datasource.password}
       #    需要在pom中引入druid依赖
       type: com.alibaba.druid.pool.DruidDataSource
+  servlet:
+    multipart:
+      #      每次max
+      max-file-size: 50MB
+      #      每次连接max
+      max-request-size: 200MB
 
 mybatis:
   #mapper配置文件
@@ -49,8 +55,8 @@ logging:
         service: info
         controller: info
 
-# application.yml 配置示例
-pagehelper:
-  helper-dialect: mysql  # 这是关键配置！根据你的数据库调整
-  reasonable: true       # 分页合理化，可选
-  support-methods-arguments: true # 支持接口参数，可选
+aliyun:
+  oss:
+    endpoint: https://oss-cn-beijing.aliyuncs.com
+    bucket-name: icee-sky
+    region: cn-beijing

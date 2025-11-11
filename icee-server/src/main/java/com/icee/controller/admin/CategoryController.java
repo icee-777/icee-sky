@@ -7,6 +7,7 @@ import com.icee.result.PageResult;
 import com.icee.result.Result;
 import com.icee.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/admin/category")
 @Slf4j
+@Tag(name = "分类管理")
 public class CategoryController {
 
     @Autowired

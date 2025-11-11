@@ -10,6 +10,7 @@ import com.icee.context.BaseContext;
 import com.icee.dto.EmployeeDTO;
 import com.icee.dto.EmployeeLoginDTO;
 import com.icee.dto.EmployeePageQueryDTO;
+import com.icee.dto.PasswordEditDTO;
 import com.icee.entity.Employee;
 import com.icee.exception.AccountLockedException;
 import com.icee.exception.AccountNotFoundException;
@@ -17,15 +18,19 @@ import com.icee.exception.PasswordErrorException;
 import com.icee.mapper.EmployeeMapper;
 import com.icee.result.PageResult;
 import com.icee.service.EmployeeService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.DigestUtils;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+@Transactional(rollbackFor = Exception.class)
+@Slf4j
 public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
@@ -154,6 +159,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 //                .updateUser(BaseContext.getCurrentId())
                 .build();
         employeeMapper.update(employee);
+    }
+
+    /**
+     * 修改密码
+     * @param passwordEditDTO
+     */
+    @Override
+    public void editPassword(PasswordEditDTO passwordEditDTO) {
+        String oldPassword = passwordEditDTO.getOldPassword();
+        Long empId = BaseContext.getCurrentId();
+        Employee employee = employeeMapper.getById(empId);
+
+        oldPassword = DigestUtils.md5DigestAsHex(oldPassword.getBytes());
+        if(oldPassword.equals(employee.getPassword())){
+            employee.setPassword(DigestUtils.md5DigestAsHex(passwordEditDTO.getNewPassword().getBytes()));
+            employeeMapper.update(employee);
+        }else{
+            throw new PasswordErrorException(MessageConstant.PASSWORD_ERROR);
+        }
     }
 
 }

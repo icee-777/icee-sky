@@ -4,6 +4,7 @@ import com.icee.constant.JwtClaimsConstant;
 import com.icee.dto.EmployeeDTO;
 import com.icee.dto.EmployeeLoginDTO;
 import com.icee.dto.EmployeePageQueryDTO;
+import com.icee.dto.PasswordEditDTO;
 import com.icee.entity.Employee;
 import com.icee.properties.JwtProperties;
 import com.icee.result.PageResult;
@@ -137,6 +138,18 @@ public class EmployeeController {
     @Operation(summary = "编辑员工信息")
     public Result<String> update(@RequestBody EmployeeDTO employeeDTO){
         employeeService.update(employeeDTO);
+        return Result.success();
+    }
+
+    /**
+     * 修改密码
+     * @param passwordEditDTO
+     * @return
+     */
+    @PutMapping("/editPassword")
+    @Operation(summary = "修改密码")
+    public Result<String> editPassword(@RequestBody PasswordEditDTO passwordEditDTO){
+        employeeService.editPassword(passwordEditDTO);
         return Result.success();
     }
 

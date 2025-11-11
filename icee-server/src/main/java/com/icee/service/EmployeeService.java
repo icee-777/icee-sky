@@ -3,6 +3,7 @@ package com.icee.service;
 import com.icee.dto.EmployeeDTO;
 import com.icee.dto.EmployeeLoginDTO;
 import com.icee.dto.EmployeePageQueryDTO;
+import com.icee.dto.PasswordEditDTO;
 import com.icee.entity.Employee;
 import com.icee.result.PageResult;
 
@@ -47,4 +48,10 @@ public interface EmployeeService {
      * @param employeeDTO
      */
     void update(EmployeeDTO employeeDTO);
+
+    /**
+     * 修改密码
+     * @param passwordEditDTO
+     */
+    void editPassword(PasswordEditDTO passwordEditDTO);
 }
