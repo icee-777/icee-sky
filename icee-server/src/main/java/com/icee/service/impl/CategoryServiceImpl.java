@@ -7,6 +7,7 @@ import com.icee.context.BaseContext;
 import com.icee.dto.CategoryDTO;
 import com.icee.dto.CategoryPageQueryDTO;
 import com.icee.entity.Category;
+import com.icee.exception.BaseException;
 import com.icee.mapper.CategoryMapper;
 import com.icee.mapper.DishMapper;
 import com.icee.mapper.SetmealMapper;
@@ -19,6 +20,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+
+import static com.icee.constant.MessageConstant.CATEGORY_BE_RELATED_BY_DISH;
+import static com.icee.constant.MessageConstant.CATEGORY_BE_RELATED_BY_SETMEAL;
 
 @Service
 @Slf4j
@@ -83,11 +87,11 @@ public class CategoryServiceImpl implements CategoryService {
 
         //TODO 只要分类下关联了菜品或者套餐，不能删除
         if(count>0){
-            throw new RuntimeException("当前分类下关联了菜品，不能删除");
+            throw new BaseException(CATEGORY_BE_RELATED_BY_DISH);
         }
         count = setmealMapper.countByCategoryId(id);
         if(count>0){
-            throw new RuntimeException("当前分类下关联了套餐，不能删除");
+            throw new BaseException(CATEGORY_BE_RELATED_BY_SETMEAL);
         }
 
         categoryMapper.deleteById(id);

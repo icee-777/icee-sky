@@ -43,4 +43,10 @@
         order by d.update_time desc
     </select>
 
+    <select id="getByIds" resultType="com.icee.entity.Dish">
+        select * from dish where id in
+        <foreach collection="dishIds" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
 </mapper>

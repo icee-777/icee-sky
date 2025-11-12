@@ -76,4 +76,11 @@ public interface DishMapper {
      */
     @Select("select name as categoryName from category where id= #{id}")
     String getCategoryNameById(Long id);
+
+    /**
+     * 根据id批量查询菜品
+     * @param dishIds
+     * @return
+     */
+    List<Dish> getByIds(List<Long> dishIds);
 }
