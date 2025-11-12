@@ -102,8 +102,8 @@ public interface DishMapper {
     /**
      * 根据ids和status查询菜品
      * @param ids
-     * @param enable
+     * @param status
      * @return
      */
-    List<Dish> getByIdsAndStatus(List<Long> ids, Integer enable);
+    List<Dish> getByIdsAndStatus(List<Long> ids, Integer status);
 }
