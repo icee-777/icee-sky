@@ -49,4 +49,21 @@
             #{id}
         </foreach>
     </select>
+
+    <select id="getBySetmealId" resultType="com.icee.entity.Dish">
+        select d.* from dish d where d.id in(select s.dish_id from setmeal_dish s where s.setmeal_id =#{setmealId})
+    </select>
+
+    <select id="getBySetmealIdAndStatus" resultType="com.icee.entity.Dish">
+        select d.* from dish d where d.id in(select s.dish_id from setmeal_dish s where s.setmeal_id =#{setmealId}) and d.status=#{status}
+    </select>
+
+    <select id="getByIdsAndStatus" resultType="com.icee.entity.Dish">
+        select * from dish where id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+        and status=#{status}
+    </select>
+
 </mapper>

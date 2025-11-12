@@ -63,4 +63,12 @@ public interface SetmealMapper {
      * @param ids
      */
     void delete(List<Long> ids);
+
+    /**
+     * 根据ids和status查询套餐数据
+     * @param ids
+     * @param status
+     * @return
+     */
+    List<Setmeal> getByIdsAndStatus(List<Long> ids, Integer status);
 }

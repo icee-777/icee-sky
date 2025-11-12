@@ -28,6 +28,13 @@
         </where>
     </select>
 
+    <select id="getByIdsAndStatus" resultType="com.icee.entity.Setmeal">
+        select * from setmeal where status=#{status} and id in
+        <foreach collection="ids" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </select>
+
     <delete id="delete">
         delete from setmeal where id in
         <foreach collection="ids" item="id" separator="," open="(" close=")">

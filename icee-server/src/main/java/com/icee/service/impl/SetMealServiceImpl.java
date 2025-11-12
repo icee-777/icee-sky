@@ -22,8 +22,6 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.lang.module.FindException;
 import java.util.List;
 
 @Service
@@ -84,15 +82,11 @@ public class SetMealServiceImpl implements SetMealService {
     @Override
     public void status(Integer status, Long id) {
         if(status==StatusConstant.ENABLE){
-            //获取套餐内所有菜品id
-            List<Long> dishIds=setMealDishMapper.getDishIds(id);
-            //获取所有套餐内菜品
-            List<Dish> dishes=dishMapper.getByIds(dishIds);
-            for(Dish dish : dishes){
-                if(dish.getStatus()==StatusConstant.DISABLE){
-                    //TODO 抛出BaseException或其子类 ~ 可以被全局异常处理器拦截 ~ 可以给前端返回错误信息
-                    throw new BaseException(MessageConstant.SETMEAL_ENABLE_FAILED);
-                }
+            // 检查套餐内是否有停售的菜品
+            //TODO 数据库N+1查询问题 -> 直接查询套餐内全部停售菜品
+            List<Dish> notSaleList = dishMapper.getBySetmealIdAndStatus(id, StatusConstant.DISABLE);
+            if (notSaleList!=null&&!notSaleList.isEmpty()) {
+                throw new BaseException(MessageConstant.SETMEAL_ENABLE_FAILED);
             }
         }
         Setmeal setmeal=Setmeal.builder()
@@ -108,6 +102,9 @@ public class SetMealServiceImpl implements SetMealService {
      */
     @Override
     public void update(SetmealDTO setmealDTO) {
+        if(setmealDTO==null){
+            throw new BaseException(MessageConstant.DATA_NOT_FOUND);
+        }
         Setmeal setmeal=Setmeal.builder()
                 .id(setmealDTO.getId())
                 .categoryId(setmealDTO.getCategoryId())
@@ -118,12 +115,19 @@ public class SetMealServiceImpl implements SetMealService {
                 .image(setmealDTO.getImage())
                 .build();
         setmealMapper.update(setmeal);
-        List<SetmealDish> dishList = setmealDTO.getSetmealDishes();
-        for(SetmealDish setmealDish : dishList){
-           setmealDish.setSetmealId(setmeal.getId());
-        }
         setMealDishMapper.deleteBySetmealId(setmealDTO.getId());
-        setMealDishMapper.insertBatch(dishList);
+        List<SetmealDish> dishList = setmealDTO.getSetmealDishes();
+        if(dishList!=null&&!dishList.isEmpty()){
+            for(SetmealDish setmealDish : dishList){
+                //TODO 增强for可以避免索引越界异常,但不保证集合内元素不为null
+                if(setmealDish!=null){
+                    setmealDish.setSetmealId(setmeal.getId());
+                }else{
+                    continue;
+                }
+            }
+            setMealDishMapper.insertBatch(dishList);
+        }
     }
 
     /**
@@ -151,13 +155,18 @@ public class SetMealServiceImpl implements SetMealService {
     @Override
     public void delete(List<Long> ids) {
         //套餐在售则不能删除
-        for(Long id : ids){
-            Setmeal setmeal=setmealMapper.getById(id);
-            if(setmeal.getStatus()== StatusConstant.ENABLE){
-                throw new DeletionNotAllowedException(MessageConstant.SETMEAL_ON_SALE);
-            }
-        }
+//        for(Long id : ids){
+//            Setmeal setmeal=setmealMapper.getById(id);
+//            if(setmeal.getStatus()== StatusConstant.ENABLE){
+//                throw new DeletionNotAllowedException(MessageConstant.SETMEAL_ON_SALE);
+//            }
+//        }
 
+        //TODO 数据库N+1查询问题 -> 直接查询套餐内全部起售菜品
+        List<Dish> onSaleList=dishMapper.getByIdsAndStatus(ids,StatusConstant.ENABLE);
+        if(onSaleList!=null&&!onSaleList.isEmpty()){
+            throw new DeletionNotAllowedException(MessageConstant.SETMEAL_ON_SALE);
+        }
         setmealMapper.delete(ids);
         setMealDishMapper.delete(ids);
     }

@@ -4,18 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="菜品管理代码开发">
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/SetMealController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/SetMealService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/SetMealServiceImpl.java" afterDir="false" />
+    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="套餐管理代码开发">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/constant/MessageConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/constant/MessageConstant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetMealDishMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetMealDishMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetmealMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetmealMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/CategoryServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/CategoryServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/SetMealServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/SetMealServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/DishMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/DishMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/SetMealDishMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/SetMealDishMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/SetmealMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/SetmealMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,12 +30,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {}
-}]]></component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {}
+}</component>
   <component name="GithubPullRequestsUISettings"><![CDATA[{
   "selectedUrlAndAccountId": {
-    "url": "https://github.com/icee-777/icee-sky.git",
+    "url": "git@github.com:icee-777/icee-sky.git",
     "accountId": "76aca235-0f5f-479d-b4a7-e85b0deb8022"
   }
 }]]></component>
@@ -87,6 +82,7 @@
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "Code Search",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -141,7 +137,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1762219484199</updated>
-      <workItem from="1762219489233" duration="107208000" />
+      <workItem from="1762219489233" duration="108817000" />
+      <workItem from="1762926493354" duration="4239000" />
     </task>
     <task id="LOCAL-00001" summary="苍穹外卖项目初始代码">
       <option name="closed" value="true" />
@@ -223,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1762845548695</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="套餐管理代码开发">
+      <option name="closed" value="true" />
+      <created>1762925484096</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1762925484096</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -283,7 +288,8 @@
     <MESSAGE value="新增菜品(主键回显)代码开发" />
     <MESSAGE value="菜品分页查询代码开发" />
     <MESSAGE value="菜品管理代码开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="菜品管理代码开发" />
+    <MESSAGE value="套餐管理代码开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="套餐管理代码开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -300,5 +306,9 @@
         <PinnedItemInfo parentTag="com.icee.vo.DishVO" memberName="categoryName" />
       </pinned-members>
     </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
