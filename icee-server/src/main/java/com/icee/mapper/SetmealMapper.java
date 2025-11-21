@@ -5,6 +5,7 @@ import com.icee.annotation.AutoFill;
 import com.icee.dto.SetmealPageQueryDTO;
 import com.icee.entity.Setmeal;
 import com.icee.entity.SetmealDish;
+import com.icee.entity.ShoppingCart;
 import com.icee.enumeration.OperationType;
 import com.icee.vo.SetmealVO;
 import org.apache.ibatis.annotations.Insert;
@@ -79,4 +80,10 @@ public interface SetmealMapper {
      */
     @Select("select * from setmeal where category_id=#{categoryId} and status=1")
     List<Setmeal> list(Long categoryId);
+
+    /**
+     * 根据套餐id查询购物车数据
+     */
+    @Select("select * from shopping_cart where user_id=#{userId} and setmeal_id=#{setmealId}")
+    ShoppingCart getBySetmeal(Long setmealId,Long userId);
 }
