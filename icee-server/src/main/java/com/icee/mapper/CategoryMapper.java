@@ -58,4 +58,12 @@ public interface CategoryMapper {
      */
 //TODO status为1才显示    @Select("select * from category where type=#{type}")
     List<Category> list(Integer type);
+
+    /**
+     * 根据id查询名称
+     * @param categoryId
+     * @return
+     */
+    @Select("select name as categoryName from category where id=#{categoryId}")
+    String getName(Long categoryId);
 }

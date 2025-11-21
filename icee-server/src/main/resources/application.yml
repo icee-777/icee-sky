@@ -1,21 +1,5 @@
-icee:
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    host: localhost
-    port: 3306
-    database: icee-sky
-    username: root
-    password: lxq2007A1
-  jwt: # 设置jwt签名加密时使用的秘钥
-      admin-secret-key: itcast
-      # 设置jwt过期时间
-      admin-ttl: 72000000
-      # 设置前端传递过来的令牌名称
-      admin-token-name: token
-
-
 server:
-  port: 8080
+  port: 8081
 
 spring:
   profiles:
@@ -29,13 +13,19 @@ spring:
       username: ${icee.datasource.username}
       password: ${icee.datasource.password}
       #    需要在pom中引入druid依赖
-      type: com.alibaba.druid.pool.DruidDataSource
+      type: ${icee.datasource.type}
   servlet:
     multipart:
       #      每次max
       max-file-size: 50MB
       #      每次连接max
       max-request-size: 200MB
+  data:
+    redis:
+      host: ${icee.data.redis.host}
+      port: ${icee.data.redis.port}
+      password: ${icee.data.redis.password}
+      database: ${icee.data.redis.database}
 
 mybatis:
   #mapper配置文件
@@ -57,6 +47,21 @@ logging:
 
 aliyun:
   oss:
-    endpoint: https://oss-cn-beijing.aliyuncs.com
-    bucket-name: icee-sky
-    region: cn-beijing
+    endpoint: ${icee.aliyun.oss.endpoint}
+    bucket-name: ${icee.aliyun.oss.bucket-name}
+    region: ${icee.aliyun.oss.region}
+
+
+icee:
+  jwt: # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 72000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: itcast
+    user-ttl: 72000000
+    user-token-name: authentication
+  WeChat:
+    appid: ${icee.WeChat.appid}
+    secret: ${icee.WeChat.secret}

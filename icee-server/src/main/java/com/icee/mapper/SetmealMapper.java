@@ -71,4 +71,12 @@ public interface SetmealMapper {
      * @return
      */
     List<Setmeal> getByIdsAndStatus(List<Long> ids, Integer status);
+
+    /**
+     * 根据分类id查询套餐数据
+     * @param categoryId
+     * @return
+     */
+    @Select("select * from setmeal where category_id=#{categoryId} and status=1")
+    List<Setmeal> list(Long categoryId);
 }

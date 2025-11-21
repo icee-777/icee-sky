@@ -101,6 +101,7 @@
 <!--            <artifactId>knife4j-spring-boot-starter</artifactId>-->
 <!--        </dependency>-->
 
+<!--        由springboot版本控制-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>

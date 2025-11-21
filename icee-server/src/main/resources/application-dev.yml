@@ -6,3 +6,30 @@ icee:
     database: icee-sky
     username: root
     password: lxq2007A1
+    type: com.alibaba.druid.pool.DruidDataSource
+  jwt: # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 72000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+  aliyun:
+    oss:
+      endpoint: https://oss-cn-beijing.aliyuncs.com
+      bucket-name: icee-sky
+      region: cn-beijing
+  servlet:
+    multipart:
+      #      每次max
+      max-file-size: 50MB
+      #      每次连接max
+      max-request-size: 200MB
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 123456
+      database: 0
+  WeChat:
+    appid: wxbe614716bb010803
+    secret: e2cdcd30ae5d3a69e4acbbfbf4aef36f

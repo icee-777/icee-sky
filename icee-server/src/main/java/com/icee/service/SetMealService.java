@@ -2,7 +2,11 @@ package com.icee.service;
 
 import com.icee.dto.SetmealDTO;
 import com.icee.dto.SetmealPageQueryDTO;
+import com.icee.entity.Dish;
+import com.icee.entity.Setmeal;
 import com.icee.result.PageResult;
+import com.icee.vo.DishItemVO;
+import com.icee.vo.DishVO;
 
 import java.util.List;
 
@@ -47,4 +51,18 @@ public interface SetMealService {
      * @param ids
      */
     void delete(List<Long> ids);
+
+    /**
+     * 根据分类id查询套餐
+     * @param categoryId
+     * @return
+     */
+    List<Setmeal> list(Long categoryId);
+
+    /**
+     * 根据套餐id查询菜品选项
+     * @param id
+     * @return
+     */
+    List<DishItemVO> dishList(Long id);
 }

@@ -1,10 +1,12 @@
 package com.icee.config;
 
 import com.icee.interceptor.JwtTokenAdminInterceptor;
+import com.icee.interceptor.JwtTokenUserInterceptor;
 import com.icee.json.JacksonObjectMapper;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.OpenAPI;
 import lombok.extern.slf4j.Slf4j;
+import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +27,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
     @Autowired
     private JwtTokenAdminInterceptor jwtTokenAdminInterceptor;
+    @Autowired
+    private JwtTokenUserInterceptor jwtTokenUserInterceptor;
 
     /**
      * 注册自定义拦截器
@@ -36,6 +40,12 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         registry.addInterceptor(jwtTokenAdminInterceptor)
                 .addPathPatterns("/admin/**")
                 .excludePathPatterns("/admin/employee/login");
+        //TODO 注册用户端拦截器
+        registry.addInterceptor(jwtTokenUserInterceptor)
+                .addPathPatterns("/user/**")
+                .excludePathPatterns("/user/user/login")
+                .excludePathPatterns("/user/shop/status");
+
     }
 
 
@@ -53,6 +63,32 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                         .version("2.0")
                         .description("苍穹外卖项目接口文档"));
     }
+
+    /**
+     * 管理端接口分组
+     */
+    @Bean
+    public GroupedOpenApi adminApi() {
+        //TODO swagger文档组管理
+        return GroupedOpenApi.builder()
+                .group("管理端接口")
+                .packagesToScan("com.icee.controller.admin") // 管理端Controller包
+                .pathsToMatch("/admin/**") // 管理端路径
+                .build();
+    }
+
+    /**
+     * 用户端接口分组
+     */
+    @Bean
+    public GroupedOpenApi userApi() {
+        return GroupedOpenApi.builder()
+                .group("用户端接口")
+                .packagesToScan("com.icee.controller.user") // 用户端Controller包
+                .pathsToMatch("/user/**") // 用户端路径
+                .build();
+    }
+
 
 
     /**

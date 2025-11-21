@@ -9,6 +9,7 @@ import com.icee.dto.DishPageQueryDTO;
 import com.icee.entity.Dish;
 import com.icee.entity.DishFlavor;
 import com.icee.exception.DeletionNotAllowedException;
+import com.icee.mapper.CategoryMapper;
 import com.icee.mapper.DishFlavorMapper;
 import com.icee.mapper.DishMapper;
 import com.icee.mapper.SetMealDishMapper;
@@ -18,9 +19,13 @@ import com.icee.vo.DishVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -34,6 +39,9 @@ public class DishServiceImpl implements DishService {
     private DishFlavorMapper dishFlavorMapper;
     @Autowired
     private SetMealDishMapper setMealDishMapper;
+    @Autowired
+    private CategoryMapper categoryMapper;
+
 
     /**
      * 新增菜品
@@ -92,7 +100,7 @@ public class DishServiceImpl implements DishService {
      * @param categoryId
      */
     @Override
-    public List<Dish> list(Integer categoryId) {
+    public List<Dish> list(Long categoryId) {
         List<Dish> dishList=dishMapper.list(categoryId);
         return dishList;
     }
@@ -160,5 +168,20 @@ public class DishServiceImpl implements DishService {
 
         dishMapper.delete(ids);
         dishFlavorMapper.delete(ids);
+    }
+
+    @Override
+    public List<DishVO> dishVOList(Long categoryId) {
+
+        List<Dish> dishList=dishMapper.list(categoryId);
+        List<DishVO> voList=new ArrayList<>();
+        for(Dish dish:dishList){
+            DishVO dishVO=new DishVO();
+            BeanUtils.copyProperties(dish,dishVO);
+            dishVO.setCategoryName(categoryMapper.getName(dish.getCategoryId()));
+            dishVO.setFlavors(dishFlavorMapper.getById(dish.getId()));
+            voList.add(dishVO);
+        }
+        return voList;
     }
 }

@@ -4,14 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="套餐管理代码开发">
+    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="套餐管理(优化)代码开发">
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/config/RedisConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/ShopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserCategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserDishController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserSetmealController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserShopController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/interceptor/JwtTokenUserInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/ShopService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/ShopServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/test/java/com/icee/HttpClientTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/icee-server/src/test/java/com/icee/RedisTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/constant/MessageConstant.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/constant/MessageConstant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/properties/AliOssProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/properties/AliOssProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/properties/WeChatProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-common/src/main/java/com/icee/properties/WeChatProperties.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/SkyApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/SkyApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/config/WebMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/config/WebMvcConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/DishController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/SetMealController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/SetMealController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/CategoryMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/CategoryMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetMealDishMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetMealDishMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetmealMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetmealMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/DishService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/DishService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/SetMealService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/SetMealService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/DishServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/DishServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/SetMealServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/SetMealServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/DishMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/DishMapper.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/SetmealMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/SetmealMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,8 +49,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -53,11 +80,13 @@
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.HttpClientTest.testGet.executor": "Run",
+    "JUnit.HttpClientTest.testPost.executor": "Run",
+    "JUnit.RedisTest.testKinds.executor": "Debug",
     "Maven.icee-out [compile].executor": "Run",
     "Maven.icee-out [install].executor": "Run",
     "Maven.icee-out [package].executor": "Run",
@@ -82,7 +111,7 @@
     "project.structure.last.edited": "模块",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "Code Search",
+    "settings.editor.selected.configurable": "DSTables",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -108,12 +137,64 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/icee-server/src/main/resources/com/icee" />
     </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.icee" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.icee.interceptor" />
       <recent name="com.icee.utils" />
       <recent name="com.icee.entity" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.SkyApplication">
+    <configuration name="HttpClientTest.testGet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="icee-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.icee" />
+      <option name="MAIN_CLASS_NAME" value="com.icee.HttpClientTest" />
+      <option name="METHOD_NAME" value="testGet" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpClientTest.testPost" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="icee-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.icee" />
+      <option name="MAIN_CLASS_NAME" value="com.icee.HttpClientTest" />
+      <option name="METHOD_NAME" value="testPost" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="RedisTest.testKinds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="icee-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.icee" />
+      <option name="MAIN_CLASS_NAME" value="com.icee.RedisTest" />
+      <option name="METHOD_NAME" value="testKinds" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SkyApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="icee-server" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.icee.SkyApplication" />
@@ -121,6 +202,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.HttpClientTest.testPost" />
+        <item itemvalue="JUnit.HttpClientTest.testGet" />
+        <item itemvalue="JUnit.RedisTest.testKinds" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -138,7 +226,7 @@
       <option name="presentableId" value="Default" />
       <updated>1762219484199</updated>
       <workItem from="1762219489233" duration="108817000" />
-      <workItem from="1762926493354" duration="4239000" />
+      <workItem from="1762926493354" duration="55412000" />
     </task>
     <task id="LOCAL-00001" summary="苍穹外卖项目初始代码">
       <option name="closed" value="true" />
@@ -228,7 +316,23 @@
       <option name="project" value="LOCAL" />
       <updated>1762925484096</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="套餐管理(优化)代码开发">
+      <option name="closed" value="true" />
+      <created>1762931265663</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1762931265663</updated>
+    </task>
+    <task id="LOCAL-00013" summary="套餐管理(优化)代码开发">
+      <option name="closed" value="true" />
+      <created>1762931459976</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1762931459976</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -289,7 +393,8 @@
     <MESSAGE value="菜品分页查询代码开发" />
     <MESSAGE value="菜品管理代码开发" />
     <MESSAGE value="套餐管理代码开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="套餐管理代码开发" />
+    <MESSAGE value="套餐管理(优化)代码开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="套餐管理(优化)代码开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -298,6 +403,11 @@
           <url>file://$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java</url>
           <line>169</line>
           <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserSetmealController.java</url>
+          <line>38</line>
+          <option name="timeStamp" value="34" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

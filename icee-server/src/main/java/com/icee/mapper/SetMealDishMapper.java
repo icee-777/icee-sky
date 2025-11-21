@@ -1,6 +1,7 @@
 package com.icee.mapper;
 
 import com.icee.entity.SetmealDish;
+import com.icee.vo.DishItemVO;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
@@ -59,4 +60,12 @@ public interface SetMealDishMapper {
      */
     @Select("select dish_id from setmeal_dish where setmeal_id=#{setmealId}")
     List<Long> getDishIds(Long setmealId);
+
+    /**
+     * 根据套餐id查询菜品
+     * @param setmealId
+     * @return
+     */
+    @Select("select sd.copies,d.name,d.description,d.image from dish d left join setmeal_dish sd on d.id = sd.dish_id where sd.setmeal_id=#{setmealId}")
+    List<DishItemVO> getMealDish(Long setmealId);
 }

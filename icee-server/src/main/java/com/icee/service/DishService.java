@@ -35,7 +35,7 @@ public interface DishService {
      * @param categoryId
      * @return
      */
-    List<Dish> list(Integer categoryId);
+    List<Dish> list(Long categoryId);
 
     /**
      * 根据id查询菜品和对应的口味
@@ -55,4 +55,7 @@ public interface DishService {
      * @param ids
      */
     void delete(List<Long> ids);
+
+
+    List<DishVO> dishVOList(Long categoryId);
 }

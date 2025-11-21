@@ -11,18 +11,24 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/admin/dish")
 @Slf4j
 @Tag(name = "菜品管理")
+@Transactional
 public class DishController {
 
     @Autowired
     private DishService dishService;
+    @Autowired
+    private RedisTemplate redisTemplate;
 
     /**
      * 新增菜品
@@ -32,7 +38,10 @@ public class DishController {
     @PostMapping
     @Operation(summary = "新增菜品")
     public Result<String> save(@RequestBody DishDTO dishDTO){
+        String key="dish_"+dishDTO.getCategoryId();
         dishService.save(dishDTO);
+        //清理旧缓存数据
+        redisTemplate.delete(key);
         return Result.success();
     }
 
@@ -58,6 +67,8 @@ public class DishController {
     @Operation(summary = "启用禁用菜品")
     public Result<String> status(@PathVariable Integer status,Long id){
         dishService.status(status,id);
+        Set keys = redisTemplate.keys("dish_*");
+        redisTemplate.delete(keys);
         return Result.success();
     }
 
@@ -70,6 +81,8 @@ public class DishController {
     @Operation(summary = "修改菜品")
     public Result<String> update(@RequestBody DishDTO dishDTO){
         dishService.update(dishDTO);
+        Set keys = redisTemplate.keys("dish_*");
+        redisTemplate.delete(keys);
         return Result.success();
     }
 
@@ -80,7 +93,7 @@ public class DishController {
      */
     @GetMapping("/list")
     @Operation(summary = "获取菜品列表")
-    public Result<List<Dish>> list(Integer categoryId){
+    public Result<List<Dish>> list(Long categoryId){
         List<Dish> list = dishService.list(categoryId);
         return Result.success(list);
     }
@@ -106,6 +119,8 @@ public class DishController {
     @Operation(summary = "删除菜品")
     public Result<String> delete(@RequestParam List<Long> ids){  //TODO 若不使用@RequestParam(SpringMVC),则无法自动封装List集合,只能通过Long[]接收参数(Spring自带)
         dishService.delete(ids);
+        Set keys = redisTemplate.keys("dish_*");
+        redisTemplate.delete(keys);
         return Result.success();
     }
 }
