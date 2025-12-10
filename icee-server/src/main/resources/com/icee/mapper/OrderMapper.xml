@@ -44,4 +44,29 @@
         order by id desc
     </select>
 
+    <select id="pageDto" resultType="com.icee.vo.OrderVO">
+        select * from orders
+        <where>
+            <if test="phone!=null and phone!=''">
+                and phone=#{phone}
+            </if>
+            <if test="number!=null and number!=''">
+                and number= #{number}
+            </if>
+            <if test="status!=null">
+                and status= #{status}
+            </if>
+            <if test="beginTime!=null">
+                and order_time <![CDATA[ >= ]]> #{beginTime}
+            </if>
+            <if test="endTime!=null">
+                and order_time <![CDATA[ <= ]]> #{endTime}
+            </if>
+            <if test="userId!=null">
+                and user_id= #{userId}
+            </if>
+        </where>
+        order by id desc
+    </select>
+
 </mapper>

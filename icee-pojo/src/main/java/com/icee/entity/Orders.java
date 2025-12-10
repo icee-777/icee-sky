@@ -54,7 +54,7 @@ public class Orders implements Serializable {
     //下单时间
     private LocalDateTime orderTime;
 
-    //结账时间
+    //结账时间  //todo 时机
     private LocalDateTime checkoutTime;
 
     //支付方式 1微信，2支付宝
@@ -96,7 +96,7 @@ public class Orders implements Serializable {
     //配送状态  1立即送出  0选择具体时间
     private Integer deliveryStatus;
 
-    //送达时间
+    //送达时间    //todo 时机
     private LocalDateTime deliveryTime;
 
     //打包费

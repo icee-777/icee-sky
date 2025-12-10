@@ -65,3 +65,9 @@ icee:
   WeChat:
     appid: ${icee.WeChat.appid}
     secret: ${icee.WeChat.secret}
+  Baidu:
+    AK: ${icee.Baidu.AK}
+    shop: ${icee.Baidu.shop}
+    URL: ${icee.Baidu.URL}
+    lng: ${icee.Baidu.lng}
+    lat: ${icee.Baidu.lat}

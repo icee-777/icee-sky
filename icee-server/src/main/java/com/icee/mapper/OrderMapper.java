@@ -1,6 +1,7 @@
 package com.icee.mapper;
 
 import com.github.pagehelper.Page;
+import com.icee.dto.OrdersPageQueryDTO;
 import com.icee.entity.Orders;
 import com.icee.vo.OrderVO;
 import org.apache.ibatis.annotations.Insert;
@@ -45,4 +46,25 @@ public interface OrderMapper {
      */
     //todo 按主键降序排列(最近的订单在前)
     Page<OrderVO> page(Integer status,Long userId);
+
+    /**
+     * 获取订单详情
+     * @param ordersPageQueryDTO
+     * @return
+     */
+    //todo 1:当传入单个参数对象时,mybatis会自动映射对象属性值->直接使用变量名 #{phone} 或 <if test="phone">...</if>
+    //todo 2：当传入多个参数对象时
+    //todo 2.1:不使用@Param注解 -> #{param1.phone} 使用参数位置定位
+    //todo 2.2:使用@Param("a")注解 -> #{a.phone}   使用参数名(a)定位
+    //todo <![CDATA[ < ]]>:转义字符,避免解析错误
+    //todo 应默认使用id降序(先处理新订单)
+    Page<OrderVO> pageDto(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    /**
+     * 统计订单数量
+     * @param status
+     * @return
+     */
+    @Select("select count(*) from orders where status=#{status}")
+    Integer statusCount(Integer status);
 }

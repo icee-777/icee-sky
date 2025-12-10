@@ -40,6 +40,7 @@ public class UserController {
         Map<String,Object> claims = new HashMap<>();
         claims.put(JwtClaimsConstant.USER_ID,user.getId());
         String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(), jwtProperties.getUserTtl(), claims);
+        //todo 在实体类中添加@Builder注解
         UserLoginVO userLoginVO=UserLoginVO.builder()
                 .id(user.getId())
                 .openid(user.getOpenid())

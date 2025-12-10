@@ -33,3 +33,9 @@ icee:
   WeChat:
     appid: wxbe614716bb010803
     secret: e2cdcd30ae5d3a69e4acbbfbf4aef36f
+  Baidu:
+    AK: cQ0AIw0sLd8ptDTaok5u90f8UBgGIi79
+    URL: https://api.map.baidu.com/geocoding/v3/?
+    shop: 北京市朝阳区新街大道一号楼8层
+    lng: 116.44955872950158
+    lat: 39.926374523079889

@@ -30,7 +30,7 @@ public class OrderController {
      */
     @PostMapping("/submit")
     @Operation(summary = "用户下单")
-    public Result<OrderSubmitVO> submit(@RequestBody OrdersSubmitDTO ordersSubmitDTO){
+    public Result<OrderSubmitVO> submit(@RequestBody OrdersSubmitDTO ordersSubmitDTO) throws Exception {
         OrderSubmitVO orderSubmitVO=orderService.submit(ordersSubmitDTO);
         return Result.success(orderSubmitVO);
     }
