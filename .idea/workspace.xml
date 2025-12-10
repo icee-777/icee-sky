@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="地址薄代码开发">
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/notify/PayNotifyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserOrderController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/OrderDetailMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/OrderMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/OrderService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/OrderDetailMapper.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/OrderMapper.xml" afterDir="false" />
+    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="订单支付代码开发">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-pojo/src/main/java/com/icee/vo/OrderVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-pojo/src/main/java/com/icee/vo/OrderVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/UserOrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/user/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/OrderDetailMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/OrderDetailMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/OrderMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/ShoppingCartMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/ShoppingCartMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/OrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/ShoppingCartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/ShoppingCartServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/OrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/ShoppingCartMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/resources/com/icee/mapper/ShoppingCartMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +205,7 @@
       <workItem from="1762219489233" duration="108817000" />
       <workItem from="1762926493354" duration="69751000" />
       <workItem from="1764591661102" duration="1000" />
-      <workItem from="1765159305557" duration="19883000" />
+      <workItem from="1765159305557" duration="36862000" />
     </task>
     <task id="LOCAL-00001" summary="苍穹外卖项目初始代码">
       <option name="closed" value="true" />
@@ -335,7 +335,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765159483809</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="订单支付代码开发">
+      <option name="closed" value="true" />
+      <created>1765244016014</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1765244016014</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -400,7 +408,8 @@
     <MESSAGE value="菜品/套餐缓存代码开发" />
     <MESSAGE value="购物车代码开发" />
     <MESSAGE value="地址薄代码开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="地址薄代码开发" />
+    <MESSAGE value="订单支付代码开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="订单支付代码开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -409,11 +418,6 @@
           <url>file://$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/EmployeeServiceImpl.java</url>
           <line>169</line>
           <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/OrderServiceImpl.java</url>
-          <line>140</line>
-          <option name="timeStamp" value="45" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

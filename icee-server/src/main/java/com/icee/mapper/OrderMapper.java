@@ -1,6 +1,8 @@
 package com.icee.mapper;
 
+import com.github.pagehelper.Page;
 import com.icee.entity.Orders;
+import com.icee.vo.OrderVO;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
@@ -10,6 +12,13 @@ import java.util.function.UnaryOperator;
 
 @Mapper
 public interface OrderMapper {
+
+    /**
+     * 根据id查询订单
+     * @param id
+     */
+    @Select("select * from orders where id = #{id}")
+    Orders getById(Long id);
 
     @Options(useGeneratedKeys = true,keyProperty = "id")
     @Insert("INSERT INTO orders (number, status, user_id, address_book_id, order_time, checkout_time, pay_method, amount, remark, phone, address, user_name, consignee, cancel_reason, rejection_reason, cancel_time, estimated_delivery_time, delivery_status, delivery_time, pack_amount, tableware_number, tableware_status, pay_status) " +
@@ -28,4 +37,12 @@ public interface OrderMapper {
      * @param orders
      */
     void update(Orders orders);
+
+    /**
+     * 分页查询订单
+     * @param status
+     * @param userId
+     */
+    //todo 按主键降序排列(最近的订单在前)
+    Page<OrderVO> page(Integer status,Long userId);
 }

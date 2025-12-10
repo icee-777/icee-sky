@@ -1,6 +1,8 @@
 package com.icee.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.icee.constant.MessageConstant;
 import com.icee.context.BaseContext;
 import com.icee.dto.OrdersDTO;
@@ -12,18 +14,22 @@ import com.icee.exception.BaseException;
 import com.icee.exception.OrderBusinessException;
 import com.icee.exception.ShoppingCartBusinessException;
 import com.icee.mapper.*;
+import com.icee.result.PageResult;
 import com.icee.service.OrderService;
 import com.icee.utils.WeChatPayUtil;
 import com.icee.vo.OrderPaymentVO;
 import com.icee.vo.OrderSubmitVO;
+import com.icee.vo.OrderVO;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -110,6 +116,9 @@ public class OrderServiceImpl implements OrderService {
         Long userId = BaseContext.getCurrentId();
         User user = userMapper.getById(userId);
 
+        //获取当前订单
+        Orders orders = orderMapper.getByNumber(ordersPaymentDTO.getOrderNumber());
+
 //        //调用微信支付接口，生成预支付交易单
 //        JSONObject jsonObject = weChatPayUtil.pay(
 //                ordersPaymentDTO.getOrderNumber(), //商户订单号
@@ -126,6 +135,12 @@ public class OrderServiceImpl implements OrderService {
 
         OrderPaymentVO vo = jsonObject.toJavaObject(OrderPaymentVO.class);
         vo.setPackageStr(jsonObject.getString("package"));
+
+        orders.setStatus(Orders.CONFIRMED);
+        orders.setPayStatus(Orders.PAID);
+        //默认立即送出
+        orders.setDeliveryStatus(1);
+        orderMapper.update(orders);
 
         return vo;
     }
@@ -149,5 +164,102 @@ public class OrderServiceImpl implements OrderService {
                 .build();
 
         orderMapper.update(orders);
+    }
+
+    /**
+     * 用户端订单详情查询
+     * @param id
+     * @return
+     */
+    @Override
+    public OrderVO getOrderDetail(Long id) {
+        OrderVO orderVO=new OrderVO();
+        Orders orders=orderMapper.getById(id);
+        BeanUtils.copyProperties(orders,orderVO);
+        List<OrderDetail> orderDetails=orderDetailMapper.getByOrderId(id);
+        orderVO.setOrderDetailList(orderDetails);
+        return orderVO;
+    }
+
+    /**
+     * 订单取消
+     * @param id
+     */
+    @Override
+    public void cancel(Long id) {
+        Orders orders=orderMapper.getById(id);
+        Integer status=orders.getStatus();
+        if(status>2){
+            throw new OrderBusinessException("请与店家电话沟通");
+        }
+        if(status==Orders.PENDING_PAYMENT){
+            orders.setStatus(Orders.CANCELLED);
+        }else if(status==Orders.TO_BE_CONFIRMED){  //todo 待付款与待接单是两种状态
+            orders.setStatus(Orders.CANCELLED);
+            orders.setPayStatus(Orders.REFUND);
+        }
+
+        //todo 记录取消时间与原因
+        orders.setCancelTime(LocalDateTime.now());
+        orders.setCancelReason("用户取消");
+        orderMapper.update(orders);
+    }
+
+    /**
+     * 订单历史查询
+     * @param page
+     * @param pageSize
+     * @param status
+     * @return
+     */
+    @Override
+    public PageResult getHistoryOrders(Integer page, Integer pageSize, Integer status) {
+        Long userId = BaseContext.getCurrentId();
+        PageHelper.startPage(page,pageSize);
+        //todo 给前端应返回OrderVO
+        //todo 查询时应额外使用userId
+        Page<OrderVO> ordersPage=orderMapper.page(status,userId);
+        for(OrderVO orderVO : ordersPage){
+            Long currentId=orderVO.getId();
+            List<OrderDetail> orderDetailsList=orderDetailMapper.getByOrderId(currentId);
+            orderVO.setOrderDetailList(orderDetailsList);
+        }
+        return new PageResult(ordersPage.getTotal(),ordersPage.getResult());
+    }
+
+    /**
+     * 再来一单
+     * @param id
+     */
+    @Override
+    public void repetition(Long id) {
+        //todo 再来一单的逻辑是:将当前订单的菜品再次添加入购物车,由用户决定是否增删改菜品与下单
+        Orders orders=orderMapper.getById(id);
+        List<OrderDetail> orderDetailList=orderDetailMapper.getByOrderId(id);
+        List<ShoppingCart> shoppingCartList=new ArrayList<>();
+        for(OrderDetail od : orderDetailList){
+            ShoppingCart shoppingCart=new ShoppingCart();
+            BeanUtils.copyProperties(orders,shoppingCart);
+            BeanUtils.copyProperties(od,shoppingCart);
+            shoppingCart.setCreateTime(LocalDateTime.now());
+            shoppingCartList.add(shoppingCart);
+        }
+        shoppingCartMapper.insertBatch(shoppingCartList);
+    }
+
+    /**
+     * 获取订单的预计剩余时间
+     * @param id
+     * @return
+     */
+    @Override
+    public Long getTime(Long id) {
+        Orders orders = orderMapper.getById(id);
+        if(orders==null){
+            throw new OrderBusinessException("订单不存在");
+        }
+        LocalDateTime deliveryTime = orders.getDeliveryTime();
+        LocalDateTime now = LocalDateTime.now();
+        return ChronoUnit.MINUTES.between(now, deliveryTime);
     }
 }
