@@ -9,6 +9,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 import java.util.function.UnaryOperator;
 
 @Mapper
@@ -67,4 +71,48 @@ public interface OrderMapper {
      */
     @Select("select count(*) from orders where status=#{status}")
     Integer statusCount(Integer status);
+
+    /**
+     * 查询支付超时订单
+     * @return
+     */
+    List<Long> getPayTimeOutOrders();
+
+    /**
+     * 批量更新订单支付超时状态
+     * @param payTimeOutList
+     */
+    void updatePayTimeOut(List<Long> payTimeOutList);
+
+    /**
+     * 获取所有派送中且预计送达时间早于当前时间(凌晨一点)订单的id
+     */
+    List<Long> getDeliveryOrders();
+
+    /**
+     * 批量更新订单派送中状态
+     * @param deliveryList
+     */
+    void updateDelivery(List<Long> deliveryList);
+
+    /**
+     * 获取日期内所有订单
+     * @return
+     */
+    @Select("select * from orders where order_time between #{begin} and #{end} order by id asc")
+    List<Orders> getAllOrder(LocalDateTime begin, LocalDateTime  end);
+
+    /**
+     * 获取日期内有效订单
+     * @return
+     */
+    @Select("select * from orders where status=5 and order_time between #{begin} and #{end} order by id asc")
+    List<Orders> getValidOrder(LocalDateTime begin, LocalDateTime  end);
+
+    /**
+     * 获取日期内所有有效订单的id
+     * @return
+     */
+    @Select("select id from orders where status=5 and order_time between #{begin} and #{end} order by id asc")
+    List<Long> getAllOrderId(LocalDateTime begin, LocalDateTime end);
 }

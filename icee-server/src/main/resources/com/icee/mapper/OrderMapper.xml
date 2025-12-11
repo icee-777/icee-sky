@@ -33,6 +33,20 @@
         where id = #{id}
     </update>
 
+    <update id="updatePayTimeOut">
+        update orders set status=6 , cancel_time=now() , cancel_reason='超时未支付' where id in
+        <foreach collection="payTimeOutList" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <update id="updateDelivery">
+        update orders set status=5,delivery_time=now() where id in
+        <foreach collection="deliveryList" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </update>
+
     <select id="page" resultType="com.icee.vo.OrderVO">
         select * from orders
         <where>
@@ -67,6 +81,14 @@
             </if>
         </where>
         order by id desc
+    </select>
+
+    <select id="getPayTimeOutOrders" resultType="java.lang.Long">
+        select id from orders where status=1 and pay_status=0 AND now() <![CDATA[>]]> DATE_ADD(order_time,interval 15 minute)
+    </select>
+
+    <select id="getDeliveryOrders" resultType="java.lang.Long">
+        select id from orders where status=4 and now() <![CDATA[>]]> estimated_delivery_time
     </select>
 
 </mapper>

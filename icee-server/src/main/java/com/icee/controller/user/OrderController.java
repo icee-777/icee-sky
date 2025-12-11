@@ -111,7 +111,7 @@ public class OrderController {
     @GetMapping("/reminder/{id}")
     @Operation(summary = "订单催单")
     public Result<String> reminder(@PathVariable Long id){
-        Long time=orderService.getTime(id);
-        return Result.success("预计"+time+"分钟后送达");
+        orderService.reminder(id);
+        return Result.success();
     }
 }

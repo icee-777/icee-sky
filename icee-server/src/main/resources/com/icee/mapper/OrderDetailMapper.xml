@@ -9,4 +9,13 @@
             (#{deatil.name}, #{deatil.image}, #{deatil.orderId}, #{deatil.dishId}, #{deatil.setmealId}, #{deatil.dishFlavor}, #{deatil.amount})
         </foreach>
     </insert>
+
+    <select id="getTop10ByOrderIds" resultType="com.icee.entity.OrderDetail">
+        select od.name,sum(od.number) as number from order_detail od where order_id in
+        <foreach item="id" collection="orderIdList" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+        group by name
+        order by number desc limit 10
+    </select>
 </mapper>

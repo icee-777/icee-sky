@@ -1,5 +1,6 @@
 package com.icee.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
@@ -25,6 +26,8 @@ import com.icee.vo.OrderPaymentVO;
 import com.icee.vo.OrderStatisticsVO;
 import com.icee.vo.OrderSubmitVO;
 import com.icee.vo.OrderVO;
+import com.icee.websocket.WebSocketServer;
+import io.swagger.v3.core.util.Json;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.annotations.Property;
 import org.springframework.beans.BeanUtils;
@@ -37,10 +40,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Service
 @Transactional(rollbackFor = Exception.class)
@@ -59,6 +59,8 @@ public class OrderServiceImpl implements OrderService {
     private AddressBookMapper addressBookMapper;
     @Autowired
     private WeChatPayUtil weChatPayUtil;
+    @Autowired
+    private WebSocketServer webSocketServer;
 
     //todo 从配置文件中获取属性值
     @Value("${icee.Baidu.URL}")
@@ -131,7 +133,8 @@ public class OrderServiceImpl implements OrderService {
         orders.setUserId(userId);
         orders.setStatus(Orders.PENDING_PAYMENT);
         orders.setOrderTime(LocalDateTime.now());
-        orders.setCheckoutTime(LocalDateTime.now());
+        //todo 结账时间为用户成功支付时
+//        orders.setCheckoutTime(LocalDateTime.now());
         orders.setPayStatus(Orders.UN_PAID);
         orders.setTablewareNumber(orderDetails.size());
         orders.setNumber(String.valueOf(System.currentTimeMillis()));
@@ -188,9 +191,16 @@ public class OrderServiceImpl implements OrderService {
 
         orders.setStatus(Orders.TO_BE_CONFIRMED);
         orders.setPayStatus(Orders.PAID);
-        //默认立即送出
-        orders.setDeliveryStatus(1);
+        orders.setCheckoutTime(LocalDateTime.now());
         orderMapper.update(orders);
+
+        //todo 跳过微信支付,无法成功回调paysuccess() -> 在payment()中推送消息
+        //向客户端发送消息
+        Map<String,Object> map=new HashMap<>();
+        map.put("type",1);  //type:1来单提醒 2用户催单
+        map.put("order_Id", orders.getId());
+        map.put("content","订单号:"+orders.getNumber());
+        webSocketServer.sendToAllClient(JSON.toJSONString(map));
 
         return vo;
     }
@@ -429,5 +439,23 @@ public class OrderServiceImpl implements OrderService {
         Integer deliveryInProgress=orderMapper.statusCount(Orders.DELIVERY_IN_PROGRESS);
         OrderStatisticsVO orderStatisticsVO=new OrderStatisticsVO(toBeConfirmed,confirmed,deliveryInProgress);
         return orderStatisticsVO;
+    }
+
+    /**
+     * 订单催单
+     * @param id
+     */
+    @Override
+    public void reminder(Long id) {
+        Orders orders = orderMapper.getById(id);
+        if(orders==null){
+            throw new OrderBusinessException("订单不存在");
+        }
+        Map<String,Object> map=new HashMap<>();
+        map.put("orderId",id);
+        map.put("type",2);
+        map.put("content","用户催单:"+orders.getNumber());
+        //todo 转json格式字符串 -> JSON.toJSONString(xx)
+        webSocketServer.sendToAllClient(JSON.toJSONString(map));
     }
 }
