@@ -86,4 +86,11 @@ public interface SetmealMapper {
      */
     @Select("select * from shopping_cart where user_id=#{userId} and setmeal_id=#{setmealId}")
     ShoppingCart getBySetmeal(Long setmealId,Long userId);
+
+    /**
+     * 查询所有套餐数据
+     * @return
+     */
+    @Select("select * from setmeal")
+    List<Setmeal> getAllSetmeal();
 }

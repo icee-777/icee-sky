@@ -106,4 +106,11 @@ public interface DishMapper {
      * @return
      */
     List<Dish> getByIdsAndStatus(List<Long> ids, Integer status);
+
+    /**
+     * 查询所有菜品
+     * @return
+     */
+    @Select("select * from dish")
+    List<Dish> getAllDish();
 }

@@ -51,4 +51,13 @@ public interface UserMapper {
     @Select("select count(*) from user where create_time < #{startTime}")
     //todo  <![CDATA[<]]>是xml特有的CDATA标签，用于防止SQL注入,不能在注解方式中使用
     Long getStartUserCount(LocalDateTime startTime);
+
+    /**
+     * 获取某个时间段内新增的用户数量
+     * @param begin
+     * @param end
+     * @return
+     */
+    @Select("select count(*) from user where create_time between #{begin} and #{end}")
+    Integer getNewUserCount(LocalDateTime begin, LocalDateTime end);
 }
