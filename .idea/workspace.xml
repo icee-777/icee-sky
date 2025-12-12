@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="数据统计代码开发">
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/WorkSpaceController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/WorkSpaceService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/WorkSpaceServiceImpl.java" afterDir="false" />
+    <list default="true" id="e4f484fc-4f2c-46ac-a474-a93eaa942821" name="更改" comment="工作台代码开发">
+      <change afterPath="$PROJECT_DIR$/icee-server/src/test/java/com/icee/PoiTets.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/ReportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/controller/admin/ReportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/DishMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetmealMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/SetmealMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/ReportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/ReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/ReportServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/main/java/com/icee/service/impl/ReportServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/icee-server/src/test/java/com/icee/HttpClientTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/icee-server/src/test/java/com/icee/HttpClientTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,44 +54,45 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.HttpClientTest.testGet.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.HttpClientTest.testPost.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.RedisTest.testKinds.executor&quot;: &quot;Debug&quot;,
-    &quot;Maven.icee-out [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.icee-out [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.icee-out [package].executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.SkyApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/icee/IdeaProjects/icee-out/icee-server/src/main/java/com/icee/websocket&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.HttpClientTest.testGet.executor": "Run",
+    "JUnit.HttpClientTest.testPost.executor": "Run",
+    "JUnit.PoiTets.testExcel.executor": "Run",
+    "JUnit.RedisTest.testKinds.executor": "Debug",
+    "Maven.icee-out [compile].executor": "Run",
+    "Maven.icee-out [install].executor": "Run",
+    "Maven.icee-out [package].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.SkyApplication.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/icee/IdeaProjects/icee-out/icee-server/src/main/java/com/icee/websocket",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="ReactorSettings">
     <option name="notificationShown" value="true" />
   </component>
@@ -153,6 +152,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="PoiTets.testExcel" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="icee-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.icee.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.icee" />
+      <option name="MAIN_CLASS_NAME" value="com.icee.PoiTets" />
+      <option name="METHOD_NAME" value="testExcel" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RedisTest.testKinds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="icee-server" />
       <extension name="coverage">
@@ -178,6 +193,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.PoiTets.testExcel" />
         <item itemvalue="JUnit.HttpClientTest.testPost" />
         <item itemvalue="JUnit.HttpClientTest.testGet" />
         <item itemvalue="JUnit.RedisTest.testKinds" />
@@ -205,7 +221,8 @@
       <workItem from="1765159305557" duration="52481000" />
       <workItem from="1765357707269" duration="14614000" />
       <workItem from="1765433907147" duration="13358000" />
-      <workItem from="1765447909264" duration="9099000" />
+      <workItem from="1765447909264" duration="10418000" />
+      <workItem from="1765509251633" duration="6739000" />
     </task>
     <task id="LOCAL-00001" summary="苍穹外卖项目初始代码">
       <option name="closed" value="true" />
@@ -367,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765456331067</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="工作台代码开发">
+      <option name="closed" value="true" />
+      <created>1765507522212</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1765507522212</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -436,7 +461,8 @@
     <MESSAGE value="用户端订单代码开发" />
     <MESSAGE value="管理端订单代码开发" />
     <MESSAGE value="数据统计代码开发" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据统计代码开发" />
+    <MESSAGE value="工作台代码开发" />
+    <option name="LAST_COMMIT_MESSAGE" value="工作台代码开发" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

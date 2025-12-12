@@ -11,11 +11,19 @@ import com.icee.vo.OrderReportVO;
 import com.icee.vo.SalesTop10ReportVO;
 import com.icee.vo.TurnoverReportVO;
 import com.icee.vo.UserReportVO;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
@@ -233,5 +241,116 @@ public class ReportServiceImpl implements ReportService {
                 .numberList(numberList.toString())
                 .build();
         return salesTop10ReportVO;
+    }
+
+    /**
+     * @param  response
+     * 导出报表
+     */
+    @Override
+    public void export(HttpServletResponse response) throws IOException {
+        //准备数据
+        List<Orders> ordersList=orderMapper.getAllOrder(LocalDate.now().minusMonths(1).atStartOfDay(),LocalDate.now().atTime(23,59,59));
+        List<User> userList=userMapper.getAllUser(LocalDate.now().minusMonths(1).atStartOfDay(),LocalDate.now().atTime(23,59,59));
+        int validCount=0,total=ordersList.size(),newUser=0;
+        BigDecimal turnOver=new BigDecimal(0);
+        for(Orders orders : ordersList){
+            if(orders.getStatus()==5){
+                turnOver=turnOver.add(orders.getAmount());
+                validCount++;
+            }
+        }
+        for(User user : userList){
+            if(user.getCreateTime().isAfter(LocalDate.now().minusMonths(1).atStartOfDay())&&user.getCreateTime().isBefore(LocalDateTime.now())){
+                newUser++;
+            }
+        }
+        double unitPrice=0.0,orderCompletionRate=0.0;
+        if(total!=0){
+            orderCompletionRate=(double)validCount/total;
+        }
+        if(validCount!=0){
+            unitPrice=turnOver.divide(new BigDecimal(validCount)).doubleValue();
+        }
+
+        FileInputStream in=new FileInputStream(new File("/Users/icee/Downloads/baidu/sky/资料/day12/运营数据报表模板.xlsx"));
+        XSSFWorkbook excel=new XSSFWorkbook(in);
+        XSSFSheet sheet = excel.getSheet("sheet1");
+        int lastRowNum = sheet.getLastRowNum();
+        for(int i=3,flag=0;i<lastRowNum;i++){
+            XSSFRow row = sheet.getRow(i);
+            int cellNum = row.getLastCellNum();
+            for(int j=1;j<cellNum;j++){
+                XSSFCell cell = row.getCell(j);
+                if(cell==null){
+                    continue;
+                }
+                if(cell.getStringCellValue().contains("营业额")){
+                    row.getCell(j+1).setCellValue(turnOver.doubleValue());
+                    j++;
+                }else if(cell.getStringCellValue().contains("订单完成率")){
+                    row.getCell(j+1).setCellValue(orderCompletionRate);
+                    j++;
+                }else if(cell.getStringCellValue().contains("新增用户数")){
+                    row.getCell(j+1).setCellValue(newUser);
+                    j++;
+                }else if(cell.getStringCellValue().contains("有效订单")){
+                    row.getCell(j+1).setCellValue(validCount);
+                    j++;
+                }else if(cell.getStringCellValue().contains("平均客单价")){
+                    row.getCell(j+1).setCellValue(unitPrice);
+                    j++;
+                    flag=1;
+                }
+            }
+            if(flag==1){
+                break;
+            }
+        }
+
+        LocalDate start=LocalDate.now().minusMonths(1);
+        LocalDate end=LocalDate.now();
+        int rowNum=7;
+        for(;!start.isEqual(end);start=start.plusDays(1),rowNum++){
+            validCount=0;
+            total=0;
+            turnOver=new BigDecimal(0);
+            unitPrice=0.0;
+            orderCompletionRate=0.0;
+            newUser=0;
+            for(Orders orders : ordersList){
+                if(orders.getOrderTime().toLocalDate().isEqual(start)){
+                    total++;
+                    if(orders.getStatus()==5){
+                        turnOver=turnOver.add(orders.getAmount());
+                        validCount++;
+                    }
+                }
+            }
+            if(total!=0){
+                if(validCount!=0){
+                    //todo 除不尽时需要指定精度和舍入模式
+                    unitPrice=turnOver.divide(new BigDecimal(validCount),2, RoundingMode.HALF_UP).doubleValue();
+                }
+                orderCompletionRate=validCount/total;
+            }
+            for(User user : userList){
+                if(user.getCreateTime().isAfter(LocalDate.now().atStartOfDay())&&user.getCreateTime().isBefore(LocalDate.now().atTime(23,59,59))){
+                    newUser++;
+                }
+            }
+            XSSFRow row = sheet.getRow(rowNum);
+            row.getCell(1).setCellValue(start.toString());
+            row.getCell(2).setCellValue(turnOver.doubleValue());
+            row.getCell(3).setCellValue(validCount);
+            row.getCell(4).setCellValue(orderCompletionRate);
+            row.getCell(5).setCellValue(unitPrice);
+            row.getCell(6).setCellValue(newUser);
+        }
+
+        ServletOutputStream out = response.getOutputStream();
+        excel.write(out);
+        excel.close();
+        out.close();
     }
 }

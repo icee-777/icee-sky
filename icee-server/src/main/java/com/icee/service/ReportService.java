@@ -4,7 +4,10 @@ import com.icee.vo.OrderReportVO;
 import com.icee.vo.SalesTop10ReportVO;
 import com.icee.vo.TurnoverReportVO;
 import com.icee.vo.UserReportVO;
+import jakarta.servlet.http.HttpServletResponse;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -40,4 +43,10 @@ public interface ReportService {
      * @return
      */
     SalesTop10ReportVO getTop10Statistics(LocalDate begin, LocalDate end);
+
+    /**
+     * @param  response
+     * 导出数据
+     */
+    void export(HttpServletResponse response) throws IOException;
 }

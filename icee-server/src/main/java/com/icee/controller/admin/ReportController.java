@@ -8,6 +8,7 @@ import com.icee.vo.TurnoverReportVO;
 import com.icee.vo.UserReportVO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -80,15 +82,15 @@ public class ReportController {
         return Result.success(salesTop10ReportVO);
     }
 
-//    /**
-//     * 数据导出
-//     * @return
-//     */
-//    @GetMapping("/export")
-//    @Operation(summary = "导出数据")
-//    public Result<Export> getExport(){
-//        return Result.success();
-//    }
+    /**
+     * 数据导出
+     */
+    @GetMapping("/export")
+    @Operation(summary = "导出数据")
+    public Result<String> getExport(HttpServletResponse response) throws IOException {
+        reportService.export(response);
+        return Result.success();
+    }
 
 
 }
